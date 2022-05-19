@@ -41,7 +41,6 @@ class Clock {
   
     _tick() {
       // 1. Increment the time by one second.
-      //   this.date.setSeconds(this.sec++);
       this.sec++;
       if(this.sec > 59) {
         this.minute++;
