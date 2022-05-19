@@ -17,13 +17,43 @@ class Clock {
     printTime() {
       // Format the time in HH:MM:SS
       // Use console.log to print it.
-      console.log(`${this.hour}:${this.minute}:${this.sec}`);
+      let hh, mm, ss;
+      if(this.hour < 10){
+        hh = `0${this.hour}`;
+      } else {
+        hh = this.hour;
+      }
+
+      if(this.minute < 10){
+        mm = `0${this.minute}`;
+      } else {
+        mm = this.minute;
+      }
+
+      if(this.sec < 10){
+        ss = `0${this.sec}`;
+      } else {
+        ss = this.sec;
+      }
+
+      console.log(`${hh}:${mm}:${ss}`);
     };
   
     _tick() {
       // 1. Increment the time by one second.
       //   this.date.setSeconds(this.sec++);
       this.sec++;
+      if(this.sec > 59) {
+        this.minute++;
+        this.sec = 0;
+      } 
+      if(this.minute > 59) {
+        this.hour++;
+        this.minute = 0;
+      }
+      if(this.hour > 23){
+          this.hour = 0;
+      }
       // 2. Call printTime.
       this.printTime();
     };
